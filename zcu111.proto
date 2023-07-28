@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+enum StreamFormat {
+  REAL = 1;
+  COMPLEX = 2;
+};
+
+enum StreamType {
+  ADC = 1;
+  DAC = 2;
+};
+
+enum MixerScale {
+  scale_0dB = 1;
+  scale_N3dB = 2;
+};
+
+
+message DataConverter {
+  StreamType type = 1;
+  int n = 2;
+};
+
+message FineMixer {
+  DataConverter dc = 1;
+  float frequency = 2;
+  float phase = 3;
+  MixerScale scale = 4;
+};
+
+service ZCU111
+{
+  rpc SetFineMixer(FineMixer) returns(google.protobuf.Empty);
+};
