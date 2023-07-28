@@ -35,7 +35,7 @@ message SampleBufferInfo {
 message SampleData {
   BufferId buffer_id = 1;
   uint32 nsamples = 2;
-  bytes samples = 3; 
+  repeated int32 samples = 3; 
 }
 
 message ChannelEnable {
