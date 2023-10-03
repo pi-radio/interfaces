@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+message FirmwareLoad
+{
+  string name = 1;
+};
+
+message FirmwareChange
+{
+  string name = 1;
+};
+
+message FirmwareResult
+{
+  int32 error_code = 1;
+  string msg = 2;
+};
+
+service piradio_fpga
+{
+  rpc reload_firmware(google.protobuf.Empty) returns (FirmwareResult);
+};

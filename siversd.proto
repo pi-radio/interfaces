@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+message NumRadios {
+  uint32 N = 1;
+};
+
+service siversd {
+  rpc GetNumRadios(google.protobuf.Empty) returns (NumRadios);
+  
+};
